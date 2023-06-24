@@ -24,3 +24,14 @@ plain_text = rsa_decrypt(cipher_text, d, n)
 
 print(f'm = {hex(plain_text)}')
 assert plain_text == m
+
+# Signature and Verification
+signature = rsa_decrypt(m, d, n)
+
+print(f's = {hex(signature)}')
+assert signature == 0x16a5e20ab5c627718cef95451e358dab
+
+verification = rsa_encrypt(signature, e, n)
+
+print(f'v = {hex(verification)}')
+assert verification == m
